@@ -22,6 +22,8 @@ class _LoginPageState extends State<LoginPage> {
       passwordController.text,
     );
 
+    if (!mounted) return;
+
     setState(() => isLoading = false);
 
     if (result['success'] == true) {
@@ -31,9 +33,9 @@ class _LoginPageState extends State<LoginPage> {
         Navigator.pushReplacementNamed(context, '/catalog');
       }
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(result['message'])),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(result['message'])));
     }
   }
 
