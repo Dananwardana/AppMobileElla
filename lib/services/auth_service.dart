@@ -1,13 +1,13 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-class AuthService {
-  static const String baseUrl = 'http://127.0.0.1:8000/api';
+import 'api_service.dart';
 
+class AuthService {
   static Future<Map<String, dynamic>> login(
       String email, String password) async {
     final response = await http.post(
-      Uri.parse('$baseUrl/login'),
+      Uri.parse('${ApiService.baseUrl}/login'),
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',

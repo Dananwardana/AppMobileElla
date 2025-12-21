@@ -1,8 +1,8 @@
-import 'dart:typed_data';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import '../services/product_service.dart';
+import '../services/api_service.dart';
 
 class ProductFormPage extends StatefulWidget {
   final Map<String, dynamic>? product; // Null = Create, Not Null = Edit
@@ -208,7 +208,7 @@ class _ProductFormPageState extends State<ProductFormPage> {
     } else if (isEdit && widget.product!['image_url'] != null) {
       final raw = widget.product!['image_url'].toString();
       if (raw.isNotEmpty) {
-        String url = raw.startsWith('http') ? raw : '${ProductService.baseUrl.replaceAll('/api', '')}${raw.startsWith('/') ? '' : '/'}$raw';
+        String url = raw.startsWith('http') ? raw : '${ApiService.baseUrl.replaceAll('/api', '')}${raw.startsWith('/') ? '' : '/'}$raw';
         imageProvider = NetworkImage(url);
       }
     }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../services/product_service.dart';
+import '../services/api_service.dart';
 import 'product_form_page.dart'; // Import the new combined form page
 
 class ProductPage extends StatefulWidget {
@@ -172,7 +173,7 @@ class _ProductPageState extends State<ProductPage> {
                           if (rawImagePath.startsWith('http')) {
                             imageUrl = rawImagePath;
                           } else {
-                            final apiBase = ProductService.baseUrl;
+                            final apiBase = ApiService.baseUrl;
                             final imageBase = apiBase.replaceFirst('/api', '');
                             imageUrl = '$imageBase$rawImagePath';
                           }
